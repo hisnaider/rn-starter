@@ -1,47 +1,63 @@
-import React from 'react';
-import {TouchableOpacity, Text, View, StyleSheet} from "react-native";
+import React, {useReducer} from 'react';
+import {Text, View, StyleSheet} from "react-native";
+import ButtonColor from "../Components/ButtonColor"
+
+const reducer = (state, action) => {
+    return state+action
+}
 
 const ContadorScreen = () => {
+    const [state, dispatch] = useReducer(reducer, 0)
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.botão}>
-                <Text style={styles.texto}>Aumentar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.botão}>
-                <Text style={styles.texto}>Diminuir</Text>
-            </TouchableOpacity>
-            <View style={{height:50}}></View>
-            <Text style={styles.texto2}>Contador atual</Text>
-            <View style={{height:25}}></View>
-            <Text style={styles.contador}>0</Text>
+            <View style={styles.container2}>
+                <Text style={styles.texto}>Contador atual</Text>
+                <View style={{flexDirection:"row", alignItems: "center"}}>
+                    <Text style={[styles.texto, {color:"#a6a6a6"}]}>{state-1}</Text>
+                    <Text style={styles.contador}>{state}</Text>
+                    <Text style={[styles.texto, {color:"#a6a6a6"}]}>{state+1}</Text>
+                </View>
+                
+            </View>
+            <View style={styles.botão}>
+                <ButtonColor
+                    corFundo="#0088ff" 
+                    funcInc={() => dispatch(1)} 
+                    funcDec={() => dispatch(-1)} 
+                />
+            </View>
+            
         </View>
     )
 }
+
+
 const styles = StyleSheet.create({
     container:{
-        marginVertical:50,
-        alignItems: 'center',
+        flex: 1,
     },
-    botão:{
-        backgroundColor:"#0088ff",
+    container2:{
+        flexDirection: 'column',
         alignItems: "center",
-        justifyContent: "center",
-        width:200,
-        paddingVertical: 20,
-        marginVertical: 10,
-        borderRadius: 90
+        justifyContent: 'center',
+        flex: 5
+        
+        
     },
     texto:{
         fontSize:25,
-        color:"white"
-    },
-    texto2:{
-        fontSize:25,
-        color:"black"
+        color:"black",
+        marginHorizontal:50
     },
     contador:{
-        fontSize:40,
-        color:"black"
+        fontSize:100,
+        color:"black",
+    },
+    botão:{
+        alignItems: "center",
+        width:"100%",
+        flex: 1,
     }
+
 })
 export default ContadorScreen;

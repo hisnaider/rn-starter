@@ -22,7 +22,27 @@ const HomeScreen = ({navigation}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('Contador')}
         style={styles.botão}>
-          <Text style={styles.text}>Ir para 'ContadorScreen'</Text>
+          <Text style={styles.text}>Ir para 'CounterScreen'</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Cores')}
+        style={styles.botão}>
+          <Text style={styles.text}>Ir para 'ColorScreen'</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('MudarCores')}
+        style={styles.botão}>
+          <Text style={styles.text}>Ir para 'ChangeColorScreen'</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('TextInput')}
+        style={styles.botão}>
+          <Text style={styles.text}>Ir para 'TextInputScreen'</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Box')}
+        style={styles.botão}>
+          <Text style={styles.text}>Ir para 'BoxScreen'</Text>
       </TouchableOpacity>
     </View>
   );
